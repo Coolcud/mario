@@ -79,6 +79,8 @@ public class TextureRegistry {
     public static final GameTexture BREAKABLE_BRICK_PIECE = loadTileFromSheet(TextureSource.TILE, "Breakable Brick Piece", 52, 97);
 
     public static final GameTexture FENCE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Fence Block", 1, 114);
+    public static final GameTexture SMALL_FENCE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Small Fence Block", 18, 114);
+    public static final GameTexture BRIDGE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Bridge Block", 18, 131);
     public static final GameTexture GROUND_BRICK = loadTileFromSheet(TextureSource.TILE, "Ground Brick", 1, 131);
 
     public static final GameTexture CASTLE_TOP = loadTileFromSheet(TextureSource.TILE, "Castle Flute Top", 69, 114);
@@ -93,11 +95,12 @@ public class TextureRegistry {
     public static final GameTexture UPRIGHT_PIPE_BODY_LEFT = loadTileFromSheet(TextureSource.TILE, "Upright Pipe Body Left", 103, 63);
     public static final GameTexture UPRIGHT_PIPE_BODY_RIGHT = loadTileFromSheet(TextureSource.TILE, "Upright Pipe Body Right", 120, 63);
 
-    public static final GameTexture SIDEWAYS_PIPE_ENTRANCE_LEFT = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Entrance Top", 69, 80);
-    public static final GameTexture SIDEWAYS_PIPE_ENTRANCE_RIGHT = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Entrance Bottom", 69, 97);
+    public static final GameTexture SIDEWAYS_PIPE_ENTRANCE_TOP = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Entrance Top", 69, 80);
+    public static final GameTexture SIDEWAYS_PIPE_ENTRANCE_BOTTOM = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Entrance Bottom", 69, 97);
     public static final GameTexture SIDEWAYS_PIPE_BODY_TOP = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Body Top", 86, 80);
     public static final GameTexture SIDEWAYS_PIPE_BODY_BOTTOM = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Body Bottom", 86, 97);
     public static final GameTexture SIDEWAYS_PIPE_CONNECTION_TOP = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Top Connection", 103, 80);
+    public static final GameTexture SIDEWAYS_PIPE_CONNECTION_BOTTOM = loadTileFromSheet(TextureSource.TILE, "Sideways Pipe Bottom Connection", 103, 97);
 
     public static final GameTexture SMOOTH_MUSHROOM_PLATFORM_LEFT = loadTileFromSheet(TextureSource.TILE, "Smooth Mushroom Platform (Left)", 137, 12);
     public static final GameTexture SMOOTH_MUSHROOM_PLATFORM_MIDDLE = loadTileFromSheet(TextureSource.TILE, "Smooth Mushroom Platform (Middle)", 154, 12);
@@ -186,8 +189,8 @@ public class TextureRegistry {
     public static final GameTexture TITLE_SCREEN = loadTextureFromSheet(HUD_SHEET, "Title Screen", 1, 10, 256, 224);
     public static final GameTexture LEVEL_INTRO_SCREEN = loadTextureFromSheet(HUD_SHEET, "Level Intro Screen", 260, 10, 256, 224);
     public static final GameTexture HUD_OVERLAY = loadTextureFromSheet(HUD_SHEET, "HUD Overlay", 519, 10, 256, 224);
-    public static final GameTexture TIME_UP_SCREEN = loadTextureFromSheet(HUD_SHEET, "Time Up Screen", 1, 10, 256, 224);
-    public static final GameTexture GAME_OVER_SCREEN = loadTextureFromSheet(HUD_SHEET, "Game Over Screen", 260, 10, 256, 224);
+    public static final GameTexture TIME_UP_SCREEN = loadTextureFromSheet(HUD_SHEET, "Time Up Screen", 1, 247, 256, 224);
+    public static final GameTexture GAME_OVER_SCREEN = loadTextureFromSheet(HUD_SHEET, "Game Over Screen", 260, 247, 256, 224);
 
     private static final GameTexture[] LETTER_TEXTURES = new GameTexture[26];
     private static final GameTexture[] DIGIT_TEXTURES = new GameTexture[10];
@@ -365,6 +368,9 @@ public class TextureRegistry {
         }
     }
 
+    /**
+     * Ensures loading / setup of all textures.
+     */
     public static void loadTextures() {
         // Read letters.
         for (int i = 0; i < 26; i++)
@@ -374,8 +380,56 @@ public class TextureRegistry {
         for (int i = 0; i < 10; i++)
             DIGIT_TEXTURES[i] = loadIconFromSheet(HUD_SHEET, "Number " + i, 519 + (9 * i), 257);
 
-        // TODO: Add alternate tiles.
+        // Load alternate tiles.
+        loadAlternateTextures(SMALL_FENCE_BLOCK, 0, 0);
+        loadAlternateTextures(BRIDGE_BLOCK, 0, 1);
+        loadAlternateTextures(FLAG_POLE_TOP, 1, 0);
+        loadAlternateTextures(FLAG_POLE_BODY, 1, 1);
+        loadAlternateTextures(SIDEWAYS_PIPE_ENTRANCE_TOP, 0, 2);
+        loadAlternateTextures(SIDEWAYS_PIPE_ENTRANCE_BOTTOM, 0, 3);
+        loadAlternateTextures(SIDEWAYS_PIPE_BODY_TOP, 1, 2);
+        loadAlternateTextures(SIDEWAYS_PIPE_BODY_BOTTOM, 1, 3);
+        loadAlternateTextures(SIDEWAYS_PIPE_CONNECTION_TOP, 2, 2);
+        loadAlternateTextures(SIDEWAYS_PIPE_CONNECTION_BOTTOM, 2, 3);
+        loadAlternateTextures(UPRIGHT_PIPE_ENTRANCE_LEFT, 2, 0);
+        loadAlternateTextures(UPRIGHT_PIPE_ENTRANCE_RIGHT, 3, 0);
+        loadAlternateTextures(UPRIGHT_PIPE_BODY_LEFT, 2, 1);
+        loadAlternateTextures(UPRIGHT_PIPE_BODY_RIGHT, 3, 1);
+        loadAlternateTextures(DECORATION_HILL_TOP, 6, 1);
+        loadAlternateTextures(DECORATION_HILL_MIDDLE_LEFT, 5, 2);
+        loadAlternateTextures(DECORATION_HILL_MIDDLE_MIDDLE, 6, 2);
+        loadAlternateTextures(DECORATION_HILL_MIDDLE_RIGHT, 7, 2);
+        loadAlternateTextures(DECORATION_HILL_BOTTOM_LEFTMOST, 4, 3);
+        loadAlternateTextures(DECORATION_HILL_BOTTOM_LEFT, 5, 3);
+        loadAlternateTextures(DECORATION_HILL_BOTTOM_MIDDLE, 6, 3);
+        loadAlternateTextures(DECORATION_HILL_BOTTOM_RIGHT, 7, 3);
+        loadAlternateTextures(DECORATION_HILL_BOTTOM_RIGHTMOST, 8, 3);
+        loadAlternateTextures(SMOOTH_MUSHROOM_PLATFORM_LEFT, 8, 1);
+        loadAlternateTextures(SMOOTH_MUSHROOM_PLATFORM_MIDDLE, 9, 1);
+        loadAlternateTextures(SMOOTH_MUSHROOM_PLATFORM_RIGHT, 10, 1);
+        loadAlternateTextures(SMOOTH_MUSHROOM_BODY, 9, 2);
+
+        loadAlternateTextures(DECORATION_BUSH_LEFT, 10, 3);
+        loadAlternateTextures(DECORATION_BUSH_MIDDLE, 11, 3);
+        loadAlternateTextures(DECORATION_BUSH_RIGHT, 12, 3);
+
+        loadAlternateTextures(MUSHROOM_PLATFORM_LEFT, 12, 1);
+        loadAlternateTextures(MUSHROOM_PLATFORM_MIDDLE, 13, 1);
+        loadAlternateTextures(MUSHROOM_PLATFORM_RIGHT, 14, 1);
+        loadAlternateTextures(MUSHROOM_BODY2_TOP, 13, 2);
+        loadAlternateTextures(MUSHROOM_BODY2_BOTTOM, 13, 3);
+
+        loadAlternateTextures(DECORATION_PLANT_BODY, 14, 3);
+        loadAlternateTextures(DECORATION_SMALL_PLANT_HEAD, 14, 2);
+        loadAlternateTextures(DECORATION_LARGE_PLANT_HEAD_TOP, 15, 1);
+        loadAlternateTextures(DECORATION_LARGE_PLANT_HEAD_BOTTOM, 15, 2);
 
         System.out.println("Textures have been successfully loaded.");
+    }
+
+    // xTile and yTile are tiles, not pixels. 0, 0 is the top left corner.
+    private static void loadAlternateTextures(GameTexture texture, int xTile, int yTile) {
+        texture.addImage(TextureTheme.TILE_ALTERNATE_PALETTE1, TILE_SHEET.getSubimage(275 + (17 * xTile), 194 + (17 * yTile), 16, 16));
+        texture.addImage(TextureTheme.TILE_ALTERNATE_PALETTE2, TILE_SHEET.getSubimage(275 + (17 * xTile), 271 + (17 * yTile), 16, 16));
     }
 }
