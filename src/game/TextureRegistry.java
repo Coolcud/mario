@@ -8,7 +8,6 @@ import java.io.InputStream;
 /**
  * Contains a registry of all textures.
  * TODO: Mario + Animation + Invincibility.
- * TODO: Enemies.
  * Created by Kneesnap on 3/4/2021.
  */
 @SuppressWarnings("unused")
@@ -86,7 +85,7 @@ public class TextureRegistry {
 
     public static final GameTexture FENCE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Fence Block", 1, 114);
     public static final GameTexture SMALL_FENCE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Small Fence Block", 18, 114);
-    public static final GameTexture BRIDGE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Bridge Block", 18, 131);
+    public static final GameTexture CHAIN_LINK = loadTileFromSheet(TextureSource.TILE, "Chain Link", 18, 131);
     public static final GameTexture GROUND_BRICK = loadTileFromSheet(TextureSource.TILE, "Ground Brick", 1, 131);
 
     public static final GameTexture CASTLE_TOP = loadTileFromSheet(TextureSource.TILE, "Castle Flute Top", 69, 114);
@@ -95,6 +94,8 @@ public class TextureRegistry {
     public static final GameTexture CASTLE_ENTRANCE_LEFT = loadTileFromSheet(TextureSource.TILE, "Castle Entrance Left", 69, 131);
     public static final GameTexture CASTLE_ENTRANCE_MIDDLE = loadTileFromSheet(TextureSource.TILE, "Castle Entrance Middle", 86, 131);
     public static final GameTexture CASTLE_ENTRANCE_RIGHT = loadTileFromSheet(TextureSource.TILE, "Castle Entrance Right", 103, 131);
+
+    public static final GameTexture BRIDGE_BLOCK = loadTileFromSheet(TextureSource.TILE, "Bridge Block", 137, 131);
 
     public static final GameTexture UPRIGHT_PIPE_ENTRANCE_LEFT = loadTileFromSheet(TextureSource.TILE, "Upright Pipe Entrance Left", 103, 46);
     public static final GameTexture UPRIGHT_PIPE_ENTRANCE_RIGHT = loadTileFromSheet(TextureSource.TILE, "Upright Pipe Entrance Right", 120, 46);
@@ -124,6 +125,12 @@ public class TextureRegistry {
     public static final GameTexture WATER_TOP = loadTileFromSheet(TextureSource.TILE, "Water/Lava (Top)", 171, 12);
     public static final GameTexture WATER_BODY = loadTileFromSheet(TextureSource.TILE, "Water/Lava (Body)", 171, 29);
 
+    public static final GameTexture BILL_BLASTER_TOP = loadTileFromSheet(TextureSource.TILE, "Bill Blaster (Top)", 256, 12);
+    public static final GameTexture BILL_BLASTER_SKULL = loadTileFromSheet(TextureSource.TILE, "Bill Blaster (Skull)", 256, 29);
+    public static final GameTexture BILL_BLASTER_BODY = loadTileFromSheet(TextureSource.TILE, "Bill Blaster (Body)", 256, 46);
+
+    public static final GameTexture DECORATION_CORAL = loadTileFromSheet(TextureSource.TILE, "Coral", 35, 114);
+
     public static final GameTexture DECORATION_PLANT_BODY = loadTileFromSheet(TextureSource.TILE, "Plant Body", 222, 46);
     public static final GameTexture DECORATION_SMALL_PLANT_HEAD = loadTileFromSheet(TextureSource.TILE, "Small Plant Head", 222, 29);
     public static final GameTexture DECORATION_LARGE_PLANT_HEAD_TOP = loadTileFromSheet(TextureSource.TILE, "Large Plant Head (Top)", 239, 12);
@@ -151,6 +158,73 @@ public class TextureRegistry {
     public static final GameTexture DECORATION_HILL_BOTTOM_RIGHTMOST = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Furthest Right)", 203, 97);
 
     // Entities:
+    public static final GameTexture GOOMBA_1 = loadTileFromSheet(TextureSource.ENTITY, "Goomba (Frame #1)", 1, 28);
+    public static final GameTexture GOOMBA_2 = loadTileFromSheet(TextureSource.ENTITY, "Goomba (Frame #2)", 18, 28);
+    public static final GameTexture GOOMBA_SQUISHED = loadTileFromSheet(TextureSource.ENTITY, "Goomba Squished", 39, 28);
+
+    public static final GameTexture GREEN_KOOPA_1 = loadTextureFromSheet(TextureSource.ENTITY, "Green Koopa (Frame #1)", 60, 12, 16, 32);
+    public static final GameTexture GREEN_KOOPA_2 = loadTextureFromSheet(TextureSource.ENTITY, "Green Koopa (Frame #2)", 77, 12, 16, 32);
+
+    public static final GameTexture GREEN_WINGED_KOOPA_1 = loadTextureFromSheet(TextureSource.ENTITY, "Green Winged Koopa (Frame #1)", 98, 12, 16, 32);
+    public static final GameTexture GREEN_WINGED_KOOPA_2 = loadTextureFromSheet(TextureSource.ENTITY, "Green Winged Koopa (Frame #2)", 115, 12, 16, 32);
+
+    public static final GameTexture GREEN_KOOPA_SHELL = loadTileFromSheet(TextureSource.ENTITY, "Green Koopa Shell", 136, 28);
+    public static final GameTexture GREEN_KOOPA_SHELL_WITH_FEET = loadTileFromSheet(TextureSource.ENTITY, "Green Koopa Shell (w/Feet)", 153, 28);
+
+    public static final GameTexture GREEN_PIRANHA_PLANT_OPEN_MOUTH = loadTextureFromSheet(TextureSource.ENTITY, "Green Piranha Plant (Open Mouth)", 174, 12, 16, 32);
+    public static final GameTexture GREEN_PIRANHA_PLANT_CLOSED_MOUTH = loadTextureFromSheet(TextureSource.ENTITY, "Green Piranha Plant (Closed Mouth)", 191, 12, 16, 32);
+
+    public static final GameTexture GREEN_FISH_1 = loadTileFromSheet(TextureSource.ENTITY, "Green Cheep-Cheep (Frame #1)", 212, 28);
+    public static final GameTexture GREEN_FISH_2 = loadTileFromSheet(TextureSource.ENTITY, "Green Cheep-Cheep (Frame #2)", 229, 28);
+
+    public static final GameTexture SQUID_1 = loadTextureFromSheet(TextureSource.ENTITY, "Blooper (Frame #1)", 250, 12, 16, 32);
+    public static final GameTexture SQUID_2 = loadTextureFromSheet(TextureSource.ENTITY, "Blooper (Frame #2)", 267, 12, 16, 32);
+
+    public static final GameTexture LAKITU = loadTextureFromSheet(TextureSource.ENTITY, "Lakitu", 288, 12, 16, 32);
+    public static final GameTexture LAKITU_HIDDEN = loadTileFromSheet(TextureSource.ENTITY, "Lakitu (Hiding)", 305, 28);
+
+    public static final GameTexture BUZZY_BEETLE_1 = loadTileFromSheet(TextureSource.ENTITY, "Buzzy Beetle (Frame #1)", 326, 28);
+    public static final GameTexture BUZZY_BEETLE_2 = loadTileFromSheet(TextureSource.ENTITY, "Buzzy Beetle (Frame #2)", 343, 28);
+    public static final GameTexture BUZZY_BEETLE_IN_SHELL = loadTileFromSheet(TextureSource.ENTITY, "Buzzy Beetle (In Shell)", 364, 28);
+
+    public static final GameTexture BULLET_BILL = loadTileFromSheet(TextureSource.ENTITY, "Bullet Bill", 385, 28);
+
+    public static final GameTexture HAMMER_BRO_1 = loadTextureFromSheet(TextureSource.ENTITY, "Hammer Bro (Frame #1)", 406, 12, 16, 32);
+    public static final GameTexture HAMMER_BRO_2 = loadTextureFromSheet(TextureSource.ENTITY, "Hammer Bro (Frame #2)", 423, 12, 16, 32);
+    public static final GameTexture HAMMER_BRO_THROW_1 = loadTextureFromSheet(TextureSource.ENTITY, "Hammer Bro (Frame #1)", 444, 12, 16, 32);
+    public static final GameTexture HAMMER_BRO_THROW_2 = loadTextureFromSheet(TextureSource.ENTITY, "Hammer Bro (Frame #2)", 461, 12, 16, 32);
+
+    public static final GameTexture HAMMER = loadTileFromSheet(TextureSource.ENTITY, "Hammer", 482, 12);
+
+    public static final GameTexture BOWSER_MOUTH_OPEN_1 = loadTextureFromSheet(TextureSource.ENTITY, "Bowser (Mouth Open, Frame #1)", 503, 12, 32, 32);
+    public static final GameTexture BOWSER_MOUTH_OPEN_2 = loadTextureFromSheet(TextureSource.ENTITY, "Bowser (Mouth Open, Frame #2)", 536, 12, 32, 32);
+    public static final GameTexture BOWSER_MOUTH_CLOSED_1 = loadTextureFromSheet(TextureSource.ENTITY, "Bowser (Mouth Closed, Frame #1)", 573, 12, 32, 32);
+    public static final GameTexture BOWSER_MOUTH_CLOSED_2 = loadTextureFromSheet(TextureSource.ENTITY, "Bowser (Mouth Closed, Frame #2)", 606, 12, 32, 32);
+
+    public static final GameTexture RED_KOOPA_1 = loadTextureFromSheet(ENTITY_SHEET, "Red Koopa (Frame #1)", 1, 194, 16, 32);
+    public static final GameTexture RED_KOOPA_2 = loadTextureFromSheet(ENTITY_SHEET, "Red Koopa (Frame #2)", 18, 194, 16, 32);
+
+    public static final GameTexture RED_WINGED_KOOPA_1 = loadTextureFromSheet(ENTITY_SHEET, "Red Winged Koopa (Frame #1)", 39, 194, 16, 32);
+    public static final GameTexture RED_WINGED_KOOPA_2 = loadTextureFromSheet(ENTITY_SHEET, "Red Winged Koopa (Frame #2)", 56, 194, 16, 32);
+
+    public static final GameTexture RED_KOOPA_SHELL = loadTileFromSheet(ENTITY_SHEET, "Red Koopa Shell", 77, 210);
+    public static final GameTexture RED_KOOPA_SHELL_WITH_FEET = loadTileFromSheet(ENTITY_SHEET, "Red Koopa Shell (w/Feet)", 94, 210);
+
+    public static final GameTexture RED_PIRANHA_PLANT_OPEN_MOUTH = loadTextureFromSheet(ENTITY_SHEET, "Red Piranha Plant (Open Mouth)", 115, 194, 16, 32);
+    public static final GameTexture RED_PIRANHA_PLANT_CLOSED_MOUTH = loadTextureFromSheet(ENTITY_SHEET, "Red Piranha Plant (Closed Mouth)", 132, 194, 16, 32);
+
+    public static final GameTexture RED_FISH_1 = loadTileFromSheet(ENTITY_SHEET, "Red Cheep-Cheep (Frame #1)", 153, 210);
+    public static final GameTexture RED_FISH_2 = loadTileFromSheet(ENTITY_SHEET, "Red Cheep-Cheep (Frame #2)", 170, 210);
+
+    public static final GameTexture SPINY_BALL_1 = loadTileFromSheet(ENTITY_SHEET, "Spiny Ball (Frame #1)", 191, 210);
+    public static final GameTexture SPINY_BALL_2 = loadTileFromSheet(ENTITY_SHEET, "Spiny Ball (Frame #1)", 208, 210);
+
+    public static final GameTexture SPINY_1 = loadTileFromSheet(ENTITY_SHEET, "Spiny (Frame #1)", 229, 210);
+    public static final GameTexture SPINY_2 = loadTileFromSheet(ENTITY_SHEET, "Spiny (Frame #2)", 246, 210);
+    public static final GameTexture MAP_FIRE_BALL = loadTileFromSheet(ENTITY_SHEET, "Podoboo", 267, 210);
+
+    public static final GameTexture BOWSER_FIRE_BREATH_1 = loadTextureFromSheet(ENTITY_SHEET, "Bowser Fire Breath (Frame #1)", 288, 194, 24, 8);
+    public static final GameTexture BOWSER_FIRE_BREATH_2 = loadTextureFromSheet(ENTITY_SHEET, "Bowser Fire Breath (Frame #2)", 288, 203, 24, 8);
 
     public static final GameTexture FIRE_BLAZE_1 = loadTileFromSheet(TILE_SHEET, "Fire Blaze (Frame #1)", 621, 202);
     public static final GameTexture FIRE_BLAZE_2 = loadTileFromSheet(TILE_SHEET, "Fire Blaze (Frame #2)", 638, 202);
@@ -388,7 +462,7 @@ public class TextureRegistry {
 
         // Load alternate tiles.
         loadAlternateTextures(SMALL_FENCE_BLOCK, 0, 0);
-        loadAlternateTextures(BRIDGE_BLOCK, 0, 1);
+        loadAlternateTextures(CHAIN_LINK, 0, 1);
         loadAlternateTextures(FLAG_POLE_TOP, 1, 0);
         loadAlternateTextures(FLAG_POLE_BODY, 1, 1);
         loadAlternateTextures(SIDEWAYS_PIPE_ENTRANCE_TOP, 0, 2);
