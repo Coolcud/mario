@@ -19,6 +19,7 @@ public class GameDisplay extends JPanel {
         this.game = game;
         this.buffer = new BufferedImage(GameWindow.GAME_SCREEN_WIDTH, GameWindow.GAME_SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB); // Don't need alpha for NES.
         this.graphics = this.buffer.createGraphics();
+        this.setFocusable(true);
         // Hint: addKeyListener();
     }
 
@@ -30,7 +31,7 @@ public class GameDisplay extends JPanel {
         this.game.onRender(this.graphics);
 
         GameWindow window = this.game.getWindow();
-        g.drawImage(this.buffer, 0, 0, window.getWidth(), window.getHeight(), null);
+        g.drawImage(this.buffer, 0, 0, window.getContentWidth(), window.getContentHeight(), null);
     }
 
     /**

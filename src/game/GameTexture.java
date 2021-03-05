@@ -14,7 +14,7 @@ import java.util.Map;
 public class GameTexture {
     private final String name;
     private final TextureSource source;
-    private final Map<TextureTheme, BufferedImage> loadedImages = new HashMap<>();
+    public final Map<TextureTheme, BufferedImage> loadedImages = new HashMap<>();
     private final BufferedImage defaultImage;
 
     public GameTexture(String name, TextureSource source, BufferedImage image) {
@@ -52,6 +52,9 @@ public class GameTexture {
      * @return image
      */
     public BufferedImage getImage(TextureTheme theme) {
+        if (this.source == null || this.loadedImages.isEmpty())
+            return this.defaultImage;
+
         BufferedImage image = this.loadedImages.get(theme);
         return image != null ? image : (this.source == theme.sourceType ? this.defaultImage : null);
     }
