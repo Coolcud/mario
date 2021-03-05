@@ -56,6 +56,6 @@ public class GameTexture {
             return this.defaultImage;
 
         BufferedImage image = this.loadedImages.get(theme);
-        return image != null ? image : (this.source == theme.sourceType ? this.defaultImage : null);
+        return image != null ? image : (this.source == theme.getSourceType() ? this.defaultImage : null);
     }
 }

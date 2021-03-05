@@ -21,8 +21,7 @@ public class TextureRegistry {
     public enum TextureSource {
         PLAYER,
         ENTITY,
-        TILE,
-        TILE_PALETTE
+        TILE
     }
 
     public enum TextureTheme {
@@ -44,17 +43,24 @@ public class TextureRegistry {
         TILE_UNDERWATER(TextureSource.TILE, 548, 0),
         TILE_CASTLE(TextureSource.TILE, 0, 173),
 
-        TILE_ALTERNATE_PALETTE1(TextureSource.TILE_PALETTE, 0, 0), // TODO: Special?
-        TILE_ALTERNATE_PALETTE2(TextureSource.TILE_PALETTE, 0, 0);
+        TILE_ALTERNATE_PALETTE1(null, 0, 0),
+        TILE_ALTERNATE_PALETTE2(null, 0, 0);
 
-        public final TextureSource sourceType;
-        public final int xOffset;
-        public final int yOffset;
+        private final TextureSource sourceType;
+        private final int xOffset;
+        private final int yOffset;
 
         TextureTheme(TextureSource sourceType, int xOffset, int yOffset) {
             this.sourceType = sourceType;
             this.xOffset = xOffset;
             this.yOffset = yOffset;
+        }
+
+        /**
+         * Gets the texture source type which this texture theme loads from.
+         */
+        public TextureSource getSourceType() {
+            return this.sourceType;
         }
     }
 
@@ -338,7 +344,7 @@ public class TextureRegistry {
 
         GameTexture texture = new GameTexture(texName, texSource, sheetImage.getSubimage(startX, startY, texWidth, texHeight));
         for (TextureTheme theme : TextureTheme.values())
-            if (theme.sourceType == texSource)
+            if (theme.getSourceType() == texSource)
                 texture.addImage(theme, sheetImage.getSubimage(startX + theme.xOffset, startY + theme.yOffset, texWidth, texHeight));
 
         return texture;
