@@ -1,7 +1,16 @@
 package game;
 
+import java.awt.*;
+
+/**
+ * The start of the program.
+ */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, world test3");
+        TextureRegistry.loadTextures();
+        EventQueue.invokeLater(() -> {
+            Game marioGame = new Game("Super Mario Bros.");
+            marioGame.start();
+        });
     }
 }
