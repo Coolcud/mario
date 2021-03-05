@@ -45,6 +45,7 @@ public class GameWindow extends JFrame {
         this.getContentPane().setSize(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGHT);
 
         // Setup window.
+        this.setIconImage(TextureRegistry.MARIO_SMALL_STAND.getImage());
         this.setTitle(this.game.getTitle()); // Sets the window title.
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close the game when the red 'close' button is clicked.
         this.setLocationRelativeTo(null); // Centers the window.

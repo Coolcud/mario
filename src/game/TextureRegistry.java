@@ -7,7 +7,6 @@ import java.io.InputStream;
 
 /**
  * Contains a registry of all textures.
- * TODO: Mario + Animation + Invincibility.
  * Created by Kneesnap on 3/4/2021.
  */
 @SuppressWarnings("unused")
@@ -27,10 +26,6 @@ public class TextureRegistry {
         MARIO(TextureSource.PLAYER, 0, 0),
         LUIGI(TextureSource.PLAYER, 0, 65),
         FIRE(TextureSource.PLAYER, 0, 131),
-        INVINCIBLE_OVERWORLD(TextureSource.PLAYER, 0, 0), // TODO: These need fixing.
-        INVINCIBLE_UNDERGROUND(TextureSource.PLAYER, 0, 0),
-        INVINCIBLE_UNDERWATER(TextureSource.PLAYER, 0, 0),
-        INVINCIBLE_CASTLE(TextureSource.PLAYER, 0, 0),
 
         ENTITY_OVERWORLD(TextureSource.ENTITY, 0, 0),
         ENTITY_UNDERGROUND(TextureSource.ENTITY, 0, 46),
@@ -62,6 +57,40 @@ public class TextureRegistry {
             return this.sourceType;
         }
     }
+
+    // Mario:
+    public static final GameTexture MARIO_SMALL_STAND = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Stand Still)", 1, 9);
+    public static final GameTexture MARIO_SMALL_DEATH = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Died)", 22, 9);
+
+    public static final GameTexture MARIO_SMALL_WALK_1 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Walk, Frame #1)", 43, 9);
+    public static final GameTexture MARIO_SMALL_WALK_2 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Walk, Frame #2)", 60, 9);
+    public static final GameTexture MARIO_SMALL_WALK_3 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Walk, Frame #3)", 77, 9);
+
+    public static final GameTexture MARIO_SMALL_REVERSE = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Reverse Direction)", 98, 9);
+    public static final GameTexture MARIO_SMALL_JUMP = loadTileFromSheet(TextureSource.PLAYER, "Small Mario (Jump)", 119, 9);
+
+    public static final GameTexture MARIO_SMALL_SWIM_IDLE = loadTileFromSheet(TextureSource.PLAYER, "Small Mario Swim (Idle)", 140, 9);
+    public static final GameTexture MARIO_SMALL_SWIM_1 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario Swim (Frame #1)", 157, 9);
+    public static final GameTexture MARIO_SMALL_SWIM_2 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario Swim (Frame #2)", 174, 9);
+    public static final GameTexture MARIO_SMALL_SWIM_3 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario Swim (Frame #3)", 191, 9);
+    public static final GameTexture MARIO_SMALL_SWIM_4 = loadTileFromSheet(TextureSource.PLAYER, "Small Mario Swim (Frame #4)", 208, 9);
+
+    public static final GameTexture MARIO_LARGE_STAND = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Stand Still)", 1, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_CROUCH = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Crouch)", 22, 26, 16, 32);
+
+    public static final GameTexture MARIO_LARGE_WALK_1 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Walk, Frame #1)", 43, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_WALK_2 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Walk, Frame #2)", 60, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_WALK_3 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Walk, Frame #3)", 77, 26, 16, 32);
+
+    public static final GameTexture MARIO_LARGE_REVERSE = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Reverse Direction)", 98, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_JUMP = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario (Jump)", 119, 26, 16, 32);
+
+    public static final GameTexture MARIO_LARGE_SWIM_IDLE = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario Swim (Idle)", 140, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_SWIM_1 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario Swim (Frame #1)", 157, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_SWIM_2 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario Swim (Frame #2)", 174, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_SWIM_3 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario Swim (Frame #3)", 191, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_SWIM_4 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario Swim (Frame #4)", 208, 26, 16, 32);
+    public static final GameTexture MARIO_LARGE_SWIM_5 = loadTextureFromSheet(TextureSource.PLAYER, "Large Mario Swim (Frame #5)", 225, 26, 16, 32);
 
     // Tiles:
     public static final GameTexture QUESTION_BLOCK_1 = loadTileFromSheet(TextureSource.TILE, "Question Block (Frame #1)", 1, 63);
