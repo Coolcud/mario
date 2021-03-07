@@ -48,9 +48,36 @@ public class Game {
         g.setBackground(this.backgroundColor);
         g.clearRect(0, 0, GameWindow.GAME_SCREEN_WIDTH, GameWindow.GAME_SCREEN_HEIGHT);
 
-        // An example image
-        g.drawImage(TextureRegistry.MUSHROOM_EXTRA_LIFE.getImage(), 0, 0, null);
         // TODO: This is where you can write code to draw things. (Or, call functions to draw things.)
+
+        GameTexture[][] tiles = {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, TextureRegistry.DECORATION_CLOUD_TOP_LEFT, TextureRegistry.DECORATION_CLOUD_TOP_MIDDLE, TextureRegistry.DECORATION_CLOUD_TOP_RIGHT, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, TextureRegistry.DECORATION_CLOUD_BOTTOM_LEFT, TextureRegistry.DECORATION_CLOUD_BOTTOM_MIDDLE, TextureRegistry.DECORATION_CLOUD_BOTTOM_RIGHT, null, null, null, null, null, TextureRegistry.DECORATION_CLOUD_TOP_LEFT, TextureRegistry.DECORATION_CLOUD_TOP_MIDDLE, TextureRegistry.DECORATION_CLOUD_TOP_MIDDLE, TextureRegistry.DECORATION_CLOUD_TOP_MIDDLE},
+                {null, null, null, null, null, null, null, null, null, null, null, null, TextureRegistry.DECORATION_CLOUD_BOTTOM_LEFT, TextureRegistry.DECORATION_CLOUD_BOTTOM_MIDDLE, TextureRegistry.DECORATION_CLOUD_BOTTOM_MIDDLE, TextureRegistry.DECORATION_CLOUD_BOTTOM_MIDDLE},
+                {null, null, null, null, null, null, null, TextureRegistry.QUESTION_BLOCK_1, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, TextureRegistry.SUPER_MUSHROOM, null, null, null, null, null, null, null, null, null},
+                {null, TextureRegistry.QUESTION_BLOCK_1, null, null, null, TextureRegistry.BREAKABLE_BRICK_1, TextureRegistry.QUESTION_BLOCK_1, TextureRegistry.BREAKABLE_BRICK_1, TextureRegistry.QUESTION_BLOCK_1, TextureRegistry.BREAKABLE_BRICK_1, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, TextureRegistry.DECORATION_HILL_TOP, null, null, null, null, null, null, null, null, null, null, TextureRegistry.UPRIGHT_PIPE_ENTRANCE_LEFT, TextureRegistry.UPRIGHT_PIPE_ENTRANCE_RIGHT, null},
+                {TextureRegistry.DECORATION_BUSH_RIGHT, TextureRegistry.DECORATION_HILL_MIDDLE_LEFT, TextureRegistry.DECORATION_HILL_BOTTOM_LEFT, TextureRegistry.DECORATION_HILL_MIDDLE_RIGHT, null, null, null, TextureRegistry.GOOMBA_1, TextureRegistry.DECORATION_BUSH_LEFT, TextureRegistry.DECORATION_BUSH_MIDDLE, TextureRegistry.DECORATION_BUSH_RIGHT, null, null, TextureRegistry.UPRIGHT_PIPE_BODY_LEFT, TextureRegistry.UPRIGHT_PIPE_BODY_RIGHT, null},
+                {TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK},
+                {TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK, TextureRegistry.GROUND_BRICK},
+        };
+
+        int tileWidthHeight = 16; // Number of pixels in a tile's width and height. TODO: Make this a constant.
+
+        // Draws a full screen of GROUND_BRICK
+        for (int y = 0; y < (GameWindow.GAME_SCREEN_HEIGHT / tileWidthHeight); y++) {
+            for (int x = 0; x <= (GameWindow.GAME_SCREEN_WIDTH / tileWidthHeight); x++) {
+                GameTexture checkTile = tiles[y][x];
+                if (checkTile != null) {
+                    g.drawImage(checkTile.getImage(), x * tileWidthHeight, y * tileWidthHeight, null);
+                }
+            }
+        }
     }
 
     /**

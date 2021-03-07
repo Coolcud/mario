@@ -179,11 +179,11 @@ public class TextureRegistry {
     public static final GameTexture DECORATION_HILL_TOP = loadTileFromSheet(TextureSource.TILE, "Hill (Top)", 171, 63);
     public static final GameTexture DECORATION_HILL_MIDDLE_LEFT = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Left)", 154, 80);
     public static final GameTexture DECORATION_HILL_MIDDLE_MIDDLE = loadTileFromSheet(TextureSource.TILE, "Hill (Middle)", 171, 80);
-    public static final GameTexture DECORATION_HILL_MIDDLE_RIGHT = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Right)", 186, 80);
+    public static final GameTexture DECORATION_HILL_MIDDLE_RIGHT = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Right)", 188, 80);
     public static final GameTexture DECORATION_HILL_BOTTOM_LEFTMOST = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Furthest Left)", 137, 97);
     public static final GameTexture DECORATION_HILL_BOTTOM_LEFT = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Left)", 154, 97);
     public static final GameTexture DECORATION_HILL_BOTTOM_MIDDLE = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Middle)", 171, 97);
-    public static final GameTexture DECORATION_HILL_BOTTOM_RIGHT = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Middle Right)", 186, 97);
+    public static final GameTexture DECORATION_HILL_BOTTOM_RIGHT = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Middle Right)", 188, 97);
     public static final GameTexture DECORATION_HILL_BOTTOM_RIGHTMOST = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Furthest Right)", 203, 97);
 
     // Entities:
