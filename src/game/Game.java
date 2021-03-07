@@ -13,6 +13,7 @@ public class Game {
     private final GameDisplay display;
     private final GameWindow window;
     private final GameTimer timer;
+    private final GameKeyboardInput keyboardInput;
     private final Color backgroundColor = new Color(92, 148, 252);
 
     public Game(String gameTitle) {
@@ -20,6 +21,7 @@ public class Game {
         this.display = new GameDisplay(this);
         this.window = new GameWindow(this);
         this.timer = new GameTimer();
+        this.keyboardInput = new GameKeyboardInput(this);
     }
 
     /**
@@ -27,7 +29,7 @@ public class Game {
      */
     public void start() {
         this.window.setupWindow();
-
+        this.keyboardInput.setupInput();
         GameUpdateThread updateThread = new GameUpdateThread(this);
         updateThread.start(); // Starts the updater which will cause the game to periodically update.
     }
@@ -72,6 +74,13 @@ public class Game {
      */
     public GameWindow getWindow() {
         return this.window;
+    }
+
+    /**
+     * Gets the game's keyboard input manager.
+     */
+    public GameKeyboardInput getKeyboardInput() {
+        return this.keyboardInput;
     }
 
     /**
