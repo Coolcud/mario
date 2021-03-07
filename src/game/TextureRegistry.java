@@ -4,6 +4,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains a registry of all textures.
@@ -15,6 +18,7 @@ public class TextureRegistry {
     private static final BufferedImage PLAYER_SHEET = loadImage("mario.png");
     private static final BufferedImage ENTITY_SHEET = loadImage("entity.png");
     private static final BufferedImage HUD_SHEET = loadImage("hud.png");
+    private static List<GameTexture> allTextures = null;
 
     public enum TextureSource {
         PLAYER,
@@ -358,6 +362,15 @@ public class TextureRegistry {
     }
 
     /**
+     * Gets a list of all loaded usable textures.
+     */
+    public static List<GameTexture> getAllTextures() {
+        if (allTextures == null)
+            throw new IllegalStateException("TextureRegistry has not been setup yet, so it is not possible to access all textures.");
+        return allTextures;
+    }
+
+    /**
      * Loads a game texture from a texture sheet.
      * @param source  The source to load the image from.
      * @param texName The name of the game texture.
@@ -477,10 +490,7 @@ public class TextureRegistry {
         }
     }
 
-    /**
-     * Ensures loading / setup of all textures.
-     */
-    public static void loadTextures() {
+    private static void loadFontTextures() {
         // Read letters.
         for (int i = 0; i < 26; i++)
             LETTER_TEXTURES[i] = loadIconFromSheet(HUD_SHEET, "Letter '" + (char) (i + 'A') + "'", 519 + (9 * i), 248);
@@ -488,8 +498,9 @@ public class TextureRegistry {
         // Read digits.
         for (int i = 0; i < 10; i++)
             DIGIT_TEXTURES[i] = loadIconFromSheet(HUD_SHEET, "Number " + i, 519 + (9 * i), 257);
+    }
 
-        // Load alternate tiles.
+    private static void loadAlternatePaletteTextures() {
         loadAlternateTextures(SMALL_FENCE_BLOCK, 0, 0);
         loadAlternateTextures(CHAIN_LINK, 0, 1);
         loadAlternateTextures(FLAG_POLE_TOP, 1, 0);
@@ -532,13 +543,37 @@ public class TextureRegistry {
         loadAlternateTextures(DECORATION_SMALL_PLANT_HEAD, 14, 2);
         loadAlternateTextures(DECORATION_LARGE_PLANT_HEAD_TOP, 15, 1);
         loadAlternateTextures(DECORATION_LARGE_PLANT_HEAD_BOTTOM, 15, 2);
-
-        System.out.println("Textures have been successfully loaded.");
     }
 
     // xTile and yTile are tiles, not pixels. 0, 0 is the top left corner.
     private static void loadAlternateTextures(GameTexture texture, int xTile, int yTile) {
         texture.addImage(TextureTheme.TILE_ALTERNATE_PALETTE1, TILE_SHEET.getSubimage(275 + (17 * xTile), 194 + (17 * yTile), 16, 16));
         texture.addImage(TextureTheme.TILE_ALTERNATE_PALETTE2, TILE_SHEET.getSubimage(275 + (17 * xTile), 271 + (17 * yTile), 16, 16));
+    }
+
+    private static void findAllTextures() {
+        List<GameTexture> completeTextureList = new ArrayList<>();
+        for (Field field : TextureRegistry.class.getDeclaredFields()) {
+            if (GameTexture.class.isAssignableFrom(field.getType())) {
+                try {
+                    field.setAccessible(true);
+                    completeTextureList.add((GameTexture) field.get(null));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        allTextures = completeTextureList;
+    }
+
+    /**
+     * Ensures loading / setup of all textures.
+     */
+    public static void loadTextures() {
+        loadFontTextures();
+        loadAlternatePaletteTextures(); // Load alternate tiles.
+        findAllTextures(); // Should be run last.
+        System.out.println("Textures have been successfully loaded.");
     }
 }
