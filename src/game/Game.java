@@ -69,7 +69,7 @@ public class Game {
 
         int tileWidthHeight = 16; // Number of pixels in a tile's width and height. TODO: Make this a constant.
 
-        // Draws a full screen of GROUND_BRICK
+        // Draw tilemap.
         for (int y = 0; y < (GameWindow.GAME_SCREEN_HEIGHT / tileWidthHeight); y++) {
             for (int x = 0; x < (GameWindow.GAME_SCREEN_WIDTH / tileWidthHeight); x++) {
                 GameTexture checkTile = tiles[y][x];
