@@ -71,7 +71,7 @@ public class Game {
 
         // Draws a full screen of GROUND_BRICK
         for (int y = 0; y < (GameWindow.GAME_SCREEN_HEIGHT / tileWidthHeight); y++) {
-            for (int x = 0; x <= (GameWindow.GAME_SCREEN_WIDTH / tileWidthHeight); x++) {
+            for (int x = 0; x < (GameWindow.GAME_SCREEN_WIDTH / tileWidthHeight); x++) {
                 GameTexture checkTile = tiles[y][x];
                 if (checkTile != null) {
                     g.drawImage(checkTile.getImage(), x * tileWidthHeight, y * tileWidthHeight, null);
