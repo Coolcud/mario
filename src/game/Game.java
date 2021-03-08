@@ -1,7 +1,6 @@
 package game;
 
 import game.GameDisplay.GameUpdateThread;
-import javafx.scene.input.KeyCode;
 
 import java.awt.*;
 
@@ -16,6 +15,7 @@ public class Game {
     private final GameTimer timer;
     private final GameKeyboardInput keyboardInput;
     private final Color backgroundColor = new Color(92, 148, 252);
+    private int scroll;
 
     public Game(String gameTitle) {
         this.title = gameTitle;
@@ -46,7 +46,6 @@ public class Game {
      * Called every game 'frame'. Used to draw the game scene.
      * @param g The graphics object which you can draw to.
      */
-    int scroll = 0;
     public void onRender(Graphics2D g) {
         // Clears the background.
         g.setBackground(this.backgroundColor);
