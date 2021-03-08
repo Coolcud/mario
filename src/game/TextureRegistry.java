@@ -188,7 +188,7 @@ public class TextureRegistry {
     public static final GameTexture DECORATION_HILL_BOTTOM_LEFT = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Left)", 154, 97);
     public static final GameTexture DECORATION_HILL_BOTTOM_MIDDLE = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Middle)", 171, 97);
     public static final GameTexture DECORATION_HILL_BOTTOM_RIGHT = loadTileFromSheet(TextureSource.TILE, "Hill (Bottom Middle Right)", 188, 97);
-    public static final GameTexture DECORATION_HILL_BOTTOM_RIGHTMOST = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Furthest Right)", 203, 97);
+    public static final GameTexture DECORATION_HILL_BOTTOM_RIGHTMOST = loadTileFromSheet(TextureSource.TILE, "Hill (Middle Furthest Right)", 205, 97);
 
     // Entities:
     public static final GameTexture GOOMBA_1 = loadTileFromSheet(TextureSource.ENTITY, "Goomba (Frame #1)", 1, 28);
