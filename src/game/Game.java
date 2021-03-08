@@ -1,6 +1,7 @@
 package game;
 
 import game.GameDisplay.GameUpdateThread;
+import mario.MarioSoundRegistry;
 
 import java.awt.*;
 
@@ -14,6 +15,7 @@ public class Game {
     private final GameWindow window;
     private final GameTimer timer;
     private final GameKeyboardInput keyboardInput;
+    private final GameSoundManager soundManager;
     private final Color backgroundColor = new Color(92, 148, 252);
     private int scroll;
 
@@ -23,6 +25,7 @@ public class Game {
         this.window = new GameWindow(this);
         this.timer = new GameTimer();
         this.keyboardInput = new GameKeyboardInput(this);
+        this.soundManager = new GameSoundManager();
     }
 
     /**
@@ -31,8 +34,35 @@ public class Game {
     public void start() {
         this.window.setupWindow();
         this.keyboardInput.setupInput();
+        loadSounds();
         GameUpdateThread updateThread = new GameUpdateThread(this);
         updateThread.start(); // Starts the updater which will cause the game to periodically update.
+    }
+
+    private void loadSounds() {
+        this.soundManager.loadSound(MarioSoundRegistry.COLLECT_1UP);
+        this.soundManager.loadSound(MarioSoundRegistry.BEEP);
+        this.soundManager.loadSound(MarioSoundRegistry.BIG_JUMP);
+        this.soundManager.loadSound(MarioSoundRegistry.BOWSER_DIE);
+        this.soundManager.loadSound(MarioSoundRegistry.BRICK_BREAK);
+        this.soundManager.loadSound(MarioSoundRegistry.BUMP);
+        this.soundManager.loadSound(MarioSoundRegistry.COIN);
+        this.soundManager.loadSound(MarioSoundRegistry.DEATH_JINGLE);
+        this.soundManager.loadSound(MarioSoundRegistry.ENEMY_FIRE);
+        this.soundManager.loadSound(MarioSoundRegistry.THROW_FIREBALL);
+        this.soundManager.loadSound(MarioSoundRegistry.FLAG_POLE);
+        this.soundManager.loadSound(MarioSoundRegistry.GAME_OVER_JINGLE);
+        this.soundManager.loadSound(MarioSoundRegistry.SMALL_JUMP);
+        this.soundManager.loadSound(MarioSoundRegistry.KICK);
+        this.soundManager.loadSound(MarioSoundRegistry.LEVEL_CLEAR_JINGLE);
+        this.soundManager.loadSound(MarioSoundRegistry.LOW_TIME_JINGLE);
+        this.soundManager.loadSound(MarioSoundRegistry.PAUSE);
+        this.soundManager.loadSound(MarioSoundRegistry.POWERUP);
+        this.soundManager.loadSound(MarioSoundRegistry.MARIO_SLIDE);
+        this.soundManager.loadSound(MarioSoundRegistry.SQUISH);
+        this.soundManager.loadSound(MarioSoundRegistry.THWOMP);
+        this.soundManager.loadSound(MarioSoundRegistry.VINE_EMERGE);
+        this.soundManager.loadSound(MarioSoundRegistry.ENTER_PIPE);
     }
 
     /**
@@ -110,6 +140,13 @@ public class Game {
      */
     public GameKeyboardInput getKeyboardInput() {
         return this.keyboardInput;
+    }
+
+    /**
+     * Gets the game's sound manager.
+     */
+    public GameSoundManager getSoundManager() {
+        return this.soundManager;
     }
 
     /**
